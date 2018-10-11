@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="enter_your_name">Введите ваше имя:</string>
+    <string name="enter_your_sign">Выберите знак:</string>
+    <string name="crosses">X</string>
+    <string name="nulls">O</string>
+    <string name="next">Начать игру</string>
+    <string name="name_error">Введите своё имя</string>
+    <string name="check_box_error">Выбреите знак</string>
+</resources>
