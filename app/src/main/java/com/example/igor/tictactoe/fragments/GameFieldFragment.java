@@ -1,6 +1,5 @@
 package com.example.igor.tictactoe.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,6 +21,7 @@ public class GameFieldFragment extends Fragment {
     private AndroidPlayer mAndroidPlayer;
     private Player mPlayer;
     private GameField mGameField;
+    private int[] mButtonArray;
 
     private Button mButtonField0_0;
     private Button mButtonField0_1;
@@ -35,12 +35,16 @@ public class GameFieldFragment extends Fragment {
     private Button mButtonField2_1;
     private Button mButtonField2_2;
 
+    private Button mNewGameButton;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         String sign = getActivity().getIntent().getStringExtra(GameFieldActivity.EXTRA_SIGN);
         String mName = getActivity().getIntent().getStringExtra(GameFieldActivity.EXTRA_NAME);
+
+        mButtonArray = new int[] {-1, 1, 2, 3, 4, 5, 6, 7, 8};
 
         CombinationsPool combinationsPool = new CombinationsPool(getActivity());
         mGameField = new GameField();
@@ -52,7 +56,35 @@ public class GameFieldFragment extends Fragment {
         mPlayer = new Player(sign, mName,mGameField);
     }
 
+    public void endOfGame(){
+        mNewGameButton.setVisibility(View.VISIBLE);
+
+        mButtonField0_0.setEnabled(false);
+        mButtonField0_1.setEnabled(false);
+        mButtonField0_2.setEnabled(false);
+
+        mButtonField1_0.setEnabled(false);
+        mButtonField1_1.setEnabled(false);
+        mButtonField1_2.setEnabled(false);
+
+        mButtonField2_0.setEnabled(false);
+        mButtonField2_1.setEnabled(false);
+        mButtonField2_2.setEnabled(false);
+    }
+
     public void restartGame(){
+        mGameField.newField();
+
+        mAndroidPlayer.setWinner(false);
+        mPlayer.setWinner(false);
+
+        for(int i = 0; i < mButtonArray.length; i++){
+            setStateOfView(" ", mButtonArray[i], true);
+        }
+
+        if(mAndroidPlayer.getSign().equals("x")){
+            setStateOfView(mAndroidPlayer.getSign(), mAndroidPlayer.fill(), false);
+        }
 
     }
 
@@ -60,56 +92,59 @@ public class GameFieldFragment extends Fragment {
         if(!mPlayer.isWinner() & !mAndroidPlayer.isWinner()){
             mPlayer.fill(i,y);
             if(!mPlayer.isWinner()){
-                setAndBlockView(mAndroidPlayer.getSign(), mAndroidPlayer.fill());
+                setStateOfView(mAndroidPlayer.getSign(), mAndroidPlayer.fill(), false);
             }else{
                 Toast.makeText(getActivity(), mPlayer.getName() + " победил!", Toast.LENGTH_SHORT).show();
+                endOfGame();
             }
             if(mAndroidPlayer.isWinner()){
                 Toast.makeText(getActivity(), mAndroidPlayer.getName() + " победил!", Toast.LENGTH_SHORT).show();
+                endOfGame();
             }
-            if(!mGameField.checkEmptyField()){
+            if(!mGameField.checkEmptyField() & !mPlayer.isWinner() & !mAndroidPlayer.isWinner()){
                 Toast.makeText(getActivity(), "Ничья !", Toast.LENGTH_SHORT).show();
+                endOfGame();
             }
         }
     }
 
-    public void setAndBlockView(String sign, int position){
+    public void setStateOfView(String sign, int position, boolean enable){
         switch (position){
             case -1:
                 mButtonField0_0.setText(sign);
-                mButtonField0_0.setEnabled(false);
+                mButtonField0_0.setEnabled(enable);
                 break;
             case 1:
                 mButtonField0_1.setText(sign);
-                mButtonField0_1.setEnabled(false);
+                mButtonField0_1.setEnabled(enable);
                 break;
             case 2:
                 mButtonField0_2.setText(sign);
-                mButtonField0_2.setEnabled(false);
+                mButtonField0_2.setEnabled(enable);
                 break;
             case 3:
                 mButtonField1_0.setText(sign);
-                mButtonField1_0.setEnabled(false);
+                mButtonField1_0.setEnabled(enable);
                 break;
             case 4:
                 mButtonField1_1.setText(sign);
-                mButtonField1_1.setEnabled(false);
+                mButtonField1_1.setEnabled(enable);
                 break;
             case 5:
                 mButtonField1_2.setText(sign);
-                mButtonField1_2.setEnabled(false);
+                mButtonField1_2.setEnabled(enable);
                 break;
             case 6:
                 mButtonField2_0.setText(sign);
-                mButtonField2_0.setEnabled(false);
+                mButtonField2_0.setEnabled(enable);
                 break;
             case 7:
                 mButtonField2_1.setText(sign);
-                mButtonField2_1.setEnabled(false);
+                mButtonField2_1.setEnabled(enable);
                 break;
             case 8:
                 mButtonField2_2.setText(sign);
-                mButtonField2_2.setEnabled(false);
+                mButtonField2_2.setEnabled(enable);
                 break;
         }
     }
@@ -131,10 +166,13 @@ public class GameFieldFragment extends Fragment {
         mButtonField2_1 = v.findViewById(R.id.field_2_1);
         mButtonField2_2 = v.findViewById(R.id.field_2_2);
 
-        mButtonField0_0.setOnClickListener(new View.OnClickListener() {
+        mNewGameButton = v.findViewById(R.id.new_game_button);
+        mNewGameButton.setVisibility(View.GONE);
+
+                mButtonField0_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), -1);
+                setStateOfView(mPlayer.getSign(), -1, false);
                 move(0,0);
             }
         });
@@ -142,7 +180,7 @@ public class GameFieldFragment extends Fragment {
         mButtonField0_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), 1);
+                setStateOfView(mPlayer.getSign(), 1, false);
                 move(0,1);
             }
         });
@@ -150,7 +188,7 @@ public class GameFieldFragment extends Fragment {
         mButtonField0_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), 2);
+                setStateOfView(mPlayer.getSign(), 2, false);
                 move(0,2);
             }
         });
@@ -158,7 +196,7 @@ public class GameFieldFragment extends Fragment {
         mButtonField1_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), 3);
+                setStateOfView(mPlayer.getSign(), 3, false);
                 move(1,0);
             }
         });
@@ -166,7 +204,7 @@ public class GameFieldFragment extends Fragment {
         mButtonField1_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), 4);
+                setStateOfView(mPlayer.getSign(), 4, false);
                 move(1,1);
             }
         });
@@ -174,7 +212,7 @@ public class GameFieldFragment extends Fragment {
         mButtonField1_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), 5);
+                setStateOfView(mPlayer.getSign(), 5, false);
                 move(1,2);
             }
         });
@@ -182,7 +220,7 @@ public class GameFieldFragment extends Fragment {
         mButtonField2_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), 6);
+                setStateOfView(mPlayer.getSign(), 6, false);
                 move(2,0);
             }
         });
@@ -190,7 +228,7 @@ public class GameFieldFragment extends Fragment {
         mButtonField2_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), 7);
+                setStateOfView(mPlayer.getSign(), 7, false);
                 move(2,1);
             }
         });
@@ -198,14 +236,22 @@ public class GameFieldFragment extends Fragment {
         mButtonField2_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAndBlockView(mPlayer.getSign(), 8);
+                setStateOfView(mPlayer.getSign(), 8, false);
                 move(2,2);
             }
         });
 
         if(mAndroidPlayer.getSign().equals("x")){
-            setAndBlockView(mAndroidPlayer.getSign(), mAndroidPlayer.fill());
+            setStateOfView(mAndroidPlayer.getSign(), mAndroidPlayer.fill(), false);
         }
+
+        mNewGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                restartGame();
+                mNewGameButton.setVisibility(View.GONE);
+            }
+        });
 
         return v;
 

@@ -11,6 +11,14 @@ public class GameField {
                 {" ", " ", " "}};
     }
 
+    public void newField(){
+        for(int i = 0; i < mField.length; i++){
+            for(int j = 0; j < mField[i].length; j++){
+                mField[i][j] = " ";
+            }
+        }
+    }
+
     public String[][] getField(){
         return mField;
     }

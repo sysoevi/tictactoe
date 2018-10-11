@@ -109,3 +109,6 @@ xox o x o,xoxxo x o
  xx ooxo ,xxx ooxo 
  xx o xoo,xxx o xoo
          ,  x      
+oxx o xo ,oxx o xox
+oxxoo xox,oxxooxxox
+oxx ooxox,oxxxooxox

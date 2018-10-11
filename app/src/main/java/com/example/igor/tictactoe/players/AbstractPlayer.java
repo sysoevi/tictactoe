@@ -28,7 +28,7 @@ abstract class AbstractPlayer {
         return winner;
     }
 
-    protected void setWinner(boolean winner) {
+    public void setWinner(boolean winner) {
         this.winner = winner;
     }
 
