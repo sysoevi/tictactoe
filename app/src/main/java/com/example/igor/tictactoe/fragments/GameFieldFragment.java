@@ -46,11 +46,13 @@ public class GameFieldFragment extends Fragment {
 
         mButtonArray = new int[] {-1, 1, 2, 3, 4, 5, 6, 7, 8};
 
-        CombinationsPool combinationsPool = new CombinationsPool(getActivity());
+
         mGameField = new GameField();
-        if(sign.equals("X")){
+        if(sign.equals("x")){
+            CombinationsPool combinationsPool = new CombinationsPool(getActivity(), "o");
             mAndroidPlayer = new AndroidPlayer("o", "Android",mGameField, combinationsPool);
         }else{
+            CombinationsPool combinationsPool = new CombinationsPool(getActivity(), "x");
             mAndroidPlayer = new AndroidPlayer("x", "Android",mGameField, combinationsPool);
         }
         mPlayer = new Player(sign, mName,mGameField);
@@ -92,7 +94,13 @@ public class GameFieldFragment extends Fragment {
         if(!mPlayer.isWinner() & !mAndroidPlayer.isWinner()){
             mPlayer.fill(i,y);
             if(!mPlayer.isWinner()){
-                setStateOfView(mAndroidPlayer.getSign(), mAndroidPlayer.fill(), false);
+                if(mGameField.checkEmptyField()){
+                    setStateOfView(mAndroidPlayer.getSign(), mAndroidPlayer.fill(), false);
+                }else{
+                    Toast.makeText(getActivity(), "Ничья !", Toast.LENGTH_SHORT).show();
+                    endOfGame();
+                    return;
+                }
             }else{
                 Toast.makeText(getActivity(), mPlayer.getName() + " победил!", Toast.LENGTH_SHORT).show();
                 endOfGame();

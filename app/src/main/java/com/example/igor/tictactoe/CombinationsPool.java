@@ -14,11 +14,16 @@ public class CombinationsPool {
 
     private HashMap<String, String> mCombinations;
 
-    public CombinationsPool(Context context){
+    public CombinationsPool(Context context, String sign){
         mCombinations = new HashMap<String, String>();
         try {
             String[] subStr;
-            InputStream inputStream = context.getResources().openRawResource(R.raw.combinations);
+            InputStream inputStream;
+            if(sign.equals("x")){
+                inputStream = context.getResources().openRawResource(R.raw.combinations);
+            }else{
+                inputStream = context.getResources().openRawResource(R.raw.ocombinations);
+            }
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             String line = reader.readLine();
             while (line != null) {
