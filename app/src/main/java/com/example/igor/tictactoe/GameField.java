@@ -54,6 +54,13 @@ public class GameField {
         return false;
     }
 
+    public boolean checkCell(int x, int y){
+        if(mField[x][y].equals(" ")){
+            return true;
+        }
+        return false;
+    }
+
     public boolean checkWinner(String sign){
         return checkHorizontal(sign) || checkVertical(sign) || checkDiagonal(sign);
     }

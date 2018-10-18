@@ -43,17 +43,17 @@ public class GameFieldFragment extends Fragment {
 
         String sign = getActivity().getIntent().getStringExtra(GameFieldActivity.EXTRA_SIGN);
         String mName = getActivity().getIntent().getStringExtra(GameFieldActivity.EXTRA_NAME);
-
+        int aiLevel = getActivity().getIntent().getIntExtra(GameFieldActivity.EXTRA_AI_LEVEL, 0);
         mButtonArray = new int[] {-1, 1, 2, 3, 4, 5, 6, 7, 8};
 
 
         mGameField = new GameField();
         if(sign.equals("x")){
             CombinationsPool combinationsPool = new CombinationsPool(getActivity(), "o");
-            mAndroidPlayer = new AndroidPlayer("o", "Android",mGameField, combinationsPool);
+            mAndroidPlayer = new AndroidPlayer("o", "Android",mGameField, combinationsPool, aiLevel);
         }else{
             CombinationsPool combinationsPool = new CombinationsPool(getActivity(), "x");
-            mAndroidPlayer = new AndroidPlayer("x", "Android",mGameField, combinationsPool);
+            mAndroidPlayer = new AndroidPlayer("x", "Android",mGameField, combinationsPool, aiLevel);
         }
         mPlayer = new Player(sign, mName,mGameField);
     }

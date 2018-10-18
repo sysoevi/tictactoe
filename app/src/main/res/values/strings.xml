@@ -8,4 +8,7 @@
     <string name="name_error">Введите своё имя</string>
     <string name="check_box_error">Выбреите знак</string>
     <string name="new_game">Новая игра</string>
+    <string name="ai_level">Выберите сложность:</string>
+    <string name="ai_easy_level">Легко</string>
+    <string name="ai_hard_level">Нереально</string>
 </resources>
