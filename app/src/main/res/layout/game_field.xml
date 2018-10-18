@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,17 +25,23 @@
             <Button
                 android:id="@+id/field_0_0"
                 android:layout_width="100dp"
-                android:layout_height="100dp"/>
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/field_0_1"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/field_0_2"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
         </TableRow>
 
         <TableRow>
@@ -43,17 +49,23 @@
             <Button
                 android:id="@+id/field_1_0"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/field_1_1"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/field_1_2"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
         </TableRow>
 
         <TableRow>
@@ -61,17 +73,23 @@
             <Button
                 android:id="@+id/field_2_0"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/field_2_1"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
 
             <Button
                 android:id="@+id/field_2_2"
                 android:layout_width="100dp"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
         </TableRow>
 
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Tic Tac Toe</string>
+    <string name="app_name">Крестики-нолики</string>
     <string name="enter_your_name">Введите ваше имя:</string>
     <string name="enter_your_sign">Выберите знак:</string>
     <string name="crosses">X</string>
