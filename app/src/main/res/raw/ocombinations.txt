@@ -306,6 +306,64 @@ oxoxx  ox,oxoxxo ox
 oxo xx ox,oxooxx ox
 oxo x xox,oxoox xox
      x   ,    ox   
+    oxx  ,    oxx o
+ x  oxx o,ox  oxx o
+  x oxx o,o x oxx o
+   xoxx o,o  xoxx o
+    oxxxo,o   oxxxo
+x   oxx o,x  ooxx o
+xx ooxx o,xxoooxx o
+x xooxx o,xoxooxx o
+x  ooxx o,xo ooxx o
+    ox x ,    oxox 
+x   oxox ,x o oxox 
+ x  oxox , xo oxox 
+   xoxox ,  oxox x 
+    oxoxx,  o oxoxx
+  x oxox ,  x oxoxo
+ xx oxoxo,oxx oxoxo
+  xxoxoxo,o xxoxoxo
+x x oxoxo,xox oxoxo
+    ox  x,  o ox  x
+x o ox  x,x o oxo x
+ xo ox  x, xo oxo x
+  oxox  x,  oxoxo x
+  o ox xx,  o oxoxx
+  o oxx x,  o oxxox
+x o oxxox,xoo oxxox
+  oxoxxox, ooxoxxox
+ xo oxxox,oxo oxxox
+    o xx ,    o xxo
+ x  o xxo,ox  o xxo
+  x o xxo,o x o xxo
+   xo xxo,o  xo xxo
+    oxxxo,o   oxxxo
+x   o xxo,x  oo xxo
+xx oo xxo,xx oooxxo
+x xoo xxo,x xoooxxo
+x  ooxxxo,xo ooxxxo
+    o x x,    o xox
+x   o xox,xo  o xox
+  x o xox, ox o xox
+   xo xox, o xo xox
+    oxxox, o  oxxox
+ x  o xox, x oo xox
+xx oo xox,xx oooxox
+ xxoo xox, xxoooxox
+ x ooxxox, xoooxxox
+    o  xx,    o oxx
+x   o  xx,x o o oxx
+ x  o oxx, xo o oxx
+   xo oxx,  oxo oxx
+    oxoxx,  o oxoxx
+  x o oxx,  x oxoxx
+x x oooxx,x xooooxx
+ xx oooxx, xxooooxx
+  xxoooxx, oxxoooxx
+o  xox  x,o oxox  x
+oxoxox  x,oxoxoxo x
+o oxox xx,o oxoxoxx
+o oxoxx x,o oxoxxox
       x  ,    o x  
        x ,    o  x 
         x,    o   x
